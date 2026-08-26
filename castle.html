@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defend Your Castle - Full Screen</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        #game-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        #game-container ruffle-player {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- FIXED: Added the explicit package name to the unpkg URL -->
+    <script src="https://unpkg.com"></script>
+
+    <div id="game-container"></div>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            // This will now execute properly because the library loaded above
+            const ruffle = window.RufflePlayer.newest();
+            
+            const player = ruffle.createPlayer();
+            player.config = {
+                letterbox: "on",      
+                scale: "showAll",     
+                forceScale: true
+            };
+
+            const container = document.getElementById("game-container");
+            container.appendChild(player);
+            
+            player.load("https://yodhan-78.github.io/games/castle.swf");
+        });
+    </script>
+
+</body>
+</html>
